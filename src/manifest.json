@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "蘋果日報（香港版）任睇唔嬲",
+  "version": "1.0",
+  "icons":
+  {
+    "128": "icon.png"
+  },
+  "description": "蘋果日報（香港版）免費任睇，毋須登入！",
+  "content_scripts": [
+  {
+    "run_at": "document_end",
+    "matches": ["https://*.appledaily.com/*"],
+    "js": ["main.js"]
+  }],
+  "web_accessible_resources": [
+    "content.js"
+  ]
+}
