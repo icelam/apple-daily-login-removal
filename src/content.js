@@ -16,8 +16,16 @@ var AppleDailyLoginRemover = function AppleDailyLoginRemover() {
   var _init = function _init() {
     console.log('%cDisable Apple Daily login message', 'color: red; font-size: 20px;');
 
+    // For Desktop
     if (typeof window.confirmSubscriptionOn !== 'undefined') {
       confirmSubscriptionOn = function confirmSubscriptionOn() {
+        return false;
+      };
+    }
+
+    // For mobile
+    if (typeof window.isOMOureadEnable !== 'undefined') {
+      isOMOureadEnable = function isOMOureadEnable() {
         return false;
       };
     }
