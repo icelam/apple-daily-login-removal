@@ -1,0 +1,14 @@
+/* 2020-01-20 Apple Daily HK version revamped using React */
+.paywall_fade, .omoPaywall {
+  display: none !important;
+}
+
+.authors-grid{
+  height: 32px !important;
+  overflow-y: auto !important;
+}
+
+#articleBody {
+  height: auto !important;
+  overflow-y: auto !important;
+}
