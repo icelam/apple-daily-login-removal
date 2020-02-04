@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "蘋果日報（香港版）任睇唔嬲",
-  "version": "2.0",
+  "version": "2.0.1",
   "icons": {
     "128": "icon.png"
   },
@@ -9,10 +9,11 @@
   "content_scripts": [{
     "run_at": "document_end",
     "matches": ["https://*.appledaily.com/*"],
-    "js": ["assets/js/paywall-removal.js"]
+    "js": ["assets/js/main.js"]
   }],
   "web_accessible_resources": [
-    "assets/styles/paywall-removal.css"
+    "assets/styles/paywall-removal.css",
+    "assets/js/paywall-removal.js"
   ],
   "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval' blob:; style-src * 'unsafe-inline'; font-src *; object-src 'none'"
 }

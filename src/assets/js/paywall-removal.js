@@ -1,18 +1,34 @@
+// Document ready
+var ready = function ready(fn) {
+  if (document.readyState != 'loading') {
+    fn();
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', fn);
+  } else {
+    document.attachEvent('onreadystatechange', function () {
+      if (document.readyState != 'loading') fn();
+    });
+  }
+};
+
 // Main function - to remove login box
 var AppleDailyLoginRemover = function AppleDailyLoginRemover() {
-  var injectStyle = (file_path, tag) => {
-    var node = document.getElementsByTagName(tag)[0];
-    var script = document.createElement('link');
-    script.setAttribute('type', 'text/css');
-    script.setAttribute('rel', 'stylesheet');
-    script.setAttribute('href', file_path);
-    node.appendChild(script);
-  };
-
   var _init = function _init() {
     console.log('%cDisable Apple Daily login message', 'color: red; font-size: 20px;');
 
-    injectStyle(chrome.extension.getURL('assets/styles/paywall-removal.css'), 'head');
+    // For Desktop
+    if (typeof window.confirmSubscriptionOn !== 'undefined') {
+      confirmSubscriptionOn = function confirmSubscriptionOn() {
+        return false;
+      };
+    }
+
+    // For mobile
+    if (typeof window.isOMOureadEnable !== 'undefined') {
+      isOMOureadEnable = function isOMOureadEnable() {
+        return false;
+      };
+    }
   };
 
   return {
@@ -22,4 +38,4 @@ var AppleDailyLoginRemover = function AppleDailyLoginRemover() {
 
 // Init
 var remover = new AppleDailyLoginRemover();
-remover.init();
+ready(remover.init);
